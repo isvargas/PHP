@@ -1,6 +1,6 @@
 /*
  * utils.php
- * Algumas funcoes uteis em PHP
+ * Algumas funcoes uteis em PHP.
  * ---
  * Ivan S. Vargas
  */
@@ -36,11 +36,10 @@
 	return $array;
     }
     
-     /*
-      * Esta funcao converte todos os elementos de um array para UTF-8
-      * e depois converte para json.
-      * O json_enconde funciona apenas com UTF-8
-      */
+    /*
+     * Converte todos os elementos de um array para UTF-8 e depois converte para json.
+     * O json_encode funciona apenas com UTF-8
+     */
     function array_to_json($array) {  
         @array_walk_recursive(
                 $array,
