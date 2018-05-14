@@ -10,8 +10,7 @@
      */
     function get_conexao() {
         return new PDO('firebird:dbname=localhost:C:\DATABASE.FDB;charset=utf8', 'SYSDBA', 'masterkey');    
-    }
-    
+    }    
     
     /*
      * Remove acentos em uma string e converte para utf-8
@@ -21,8 +20,7 @@
        $b = 'AAAAAAACEEEEIIIIDNOOOOOOUUUUYBSaaaaaaaceeeeiiiidnoooooouuuuyybyRr';
        $str = strtr($str, utf8_decode($a), $b);
        return utf8_decode($str);
-    }
-    
+    }    
 
     /*
      * Remove acentos em strings de um array e converte para utf-8
@@ -38,7 +36,6 @@
 	return $array;
     }
     
-
      /*
       * Esta funcao converte todos os elementos de um array para UTF-8
       * e depois converte para json.
