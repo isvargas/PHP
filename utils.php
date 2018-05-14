@@ -1,9 +1,9 @@
 /*
- utils.php
- Algumas funcoes uteis em PHP
- ---
- Ivan S. Vargas
-*/
+ * utils.php
+ * Algumas funcoes uteis em PHP
+ * ---
+ * Ivan S. Vargas
+ */
 <?php
     /*
      * Retorna uma conxao PDO com Firebird
