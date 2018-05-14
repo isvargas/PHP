@@ -5,10 +5,17 @@
  Ivan S. Vargas
 */
 <?php
+    /*
+     * Retorna uma conxao PDO com Firebird
+     */
     function get_conexao() {
         return new PDO('firebird:dbname=localhost:C:\DATABASE.FDB;charset=utf8', 'SYSDBA', 'masterkey');    
     }
     
+    
+    /*
+     * Remove acentos em uma string e converte para utf-8
+     */
     function normalizar($str){
        $a = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýýþÿŔŕ';
        $b = 'AAAAAAACEEEEIIIIDNOOOOOOUUUUYBSaaaaaaaceeeeiiiidnoooooouuuuyybyRr';
@@ -16,6 +23,10 @@
        return utf8_decode($str);
     }
     
+
+    /*
+     * Remove acentos em strings de um array e converte para utf-8
+     */
     function normalizar_array($array) {
         //remover acentos array
         @array_walk_recursive(
@@ -24,24 +35,22 @@
                     $entry = normalizar($entry);
                 }
             );
-		return $array;
+	return $array;
     }
     
-    function array_to_json($array) {
-        /*
-         * Esta funcao converte todos os elementos de um array para UTF-8
-         * e depois converte para json.
-         * Na pesquisa de Clifor nao retornava dados, pq o json_enconde
-         * funciona apenas com UTF-8
-         */
-        
+
+     /*
+      * Esta funcao converte todos os elementos de um array para UTF-8
+      * e depois converte para json.
+      * O json_enconde funciona apenas com UTF-8
+      */
+    function array_to_json($array) {  
         @array_walk_recursive(
                 $array,
                 function (&$entry) {
                     $entry = iconv('Windows-1250', 'UTF-8', $entry);
                 }
             );
-
         return json_encode($array);
     }
 
