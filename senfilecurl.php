@@ -1,23 +1,24 @@
 <?php 
-	//enviando arquivos via POST com CURL
+	//ENVIAR ARQUIVOS VIA POST COM CURL
 	
-	//Initialise the cURL var
+	//inicializa o curl
 	$ch = curl_init('http://localhost:8080/files/upload');
 	
-	//basic auth
+	//configura BasicAuth
 	$header = [
 		//'Content-Type: application/json; charset=utf-8',
-		'Authorization: Basic '.base64_encode('atendimento@htisolucoes.com.br:66515fcdce92c88b7bbf3be5fd98fe8d9ea3d46c')
+		'Authorization: Basic '.base64_encode('user:pass')
 	];
 	
-	//cria o CurlFile
+	//cria o curfile
 	$cfile = new CURLFile('D:\teste.txt', 'text/plain', 'teste.txt');
 		
+	//aplica configuracoes
 	curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, ['file' => $cfile]);
 
-	// Execute the request
+	//executa
 	$response = curl_exec($ch);
 	
 	//print retorno
